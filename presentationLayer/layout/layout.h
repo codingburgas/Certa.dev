@@ -15,7 +15,7 @@ class Layout : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit Layout(QWidget *parent = nullptr);
+    Layout(QWidget *parent = nullptr);
 
     ~Layout();
 

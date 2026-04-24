@@ -38,9 +38,7 @@
 moc_*.cpp
 moc_*.o
 *.moc
-*.qrc
 *.rcc
-*.qrc.cpp
 
 # Qt Creator / Qt Creator session
 *.pro.user
