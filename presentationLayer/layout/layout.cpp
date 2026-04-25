@@ -1,4 +1,5 @@
 #include "layout.h"
+#include "auth.h"
 #include "ui_layout.h"
 
 Layout::Layout(QWidget *parent) : QMainWindow(parent), ui(new Ui::Layout) {
@@ -17,27 +18,28 @@ Layout::~Layout() {
     delete ui;
 }
 
-void Layout::setNavActive(NavPage page) {
-    ui->sidebarHomeButton->setChecked(page == NavPage::Home);
-    ui->sidebarMoviesButton->setChecked(page == NavPage::Movies);
-    ui->sidebarLoginButton->setChecked(page == NavPage::Login);
-    ui->sidebarSettingsButton->setChecked(page == NavPage::Settings);
+void Layout::setNavActive(NavCurrentButtonIndex index) {
+    ui->sidebarHomeButton->setChecked(index == NavCurrentButtonIndex::Home);
+    ui->sidebarMoviesButton->setChecked(index == NavCurrentButtonIndex::Movies);
+    ui->sidebarSettingsButton->setChecked(index == NavCurrentButtonIndex::Settings);
 }
 
 void Layout::on_sidebarHomeButton_clicked() {
-    setNavActive(NavPage::Home);
+    setNavActive(NavCurrentButtonIndex::Home);
     ui->stackedWidget->setCurrentWidget(ui->homeStackPage);
 }
 
 void Layout::on_sidebarMoviesButton_clicked() {
-    setNavActive(NavPage::Movies);
+    setNavActive(NavCurrentButtonIndex::Movies);
     ui->stackedWidget->setCurrentWidget(ui->moviesStackPage);
 }
 
-void Layout::on_sidebarLoginButton_clicked() {
-    setNavActive(NavPage::Login);
+void Layout::on_sidebarAuthButton_clicked() {
+    this->hide();
+    auto authPage = new Auth();
+    authPage->show();
 }
 
 void Layout::on_sidebarSettingsButton_clicked() {
-    setNavActive(NavPage::Settings);
+    setNavActive(NavCurrentButtonIndex::Settings);
 }

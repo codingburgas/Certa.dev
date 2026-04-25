@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QMainWindow>
+
 #include "home.h"
 #include "movies.h"
 
@@ -24,19 +25,18 @@ private slots:
 
     void on_sidebarMoviesButton_clicked();
 
-    void on_sidebarLoginButton_clicked();
+    void on_sidebarAuthButton_clicked();
 
     void on_sidebarSettingsButton_clicked();
 
 private:
-    enum class NavPage {
+    enum class NavCurrentButtonIndex {
         Home,
         Movies,
-        Login,
         Settings
     };
 
-    void setNavActive(NavPage page);
+    void setNavActive(NavCurrentButtonIndex index);
 
     Ui::Layout *ui;
     Home *homePage;

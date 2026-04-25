@@ -25,6 +25,14 @@ set(PROJECT_SOURCES
     presentationLayer/widgets/home/home.h
     presentationLayer/widgets/home/home.ui
 
+    presentationLayer/widgets/auth/auth.cpp
+    presentationLayer/widgets/auth/auth.h
+    presentationLayer/widgets/auth/auth.ui
+
+    presentationLayer/widgets/auth/interestsDialog/interestsDialog.cpp
+    presentationLayer/widgets/auth/interestsDialog/interestsDialog.h
+    presentationLayer/widgets/auth/interestsDialog/interestsDialog.ui
+
     presentationLayer/widgets/movies/movies.cpp
     presentationLayer/widgets/movies/movies.h
     presentationLayer/widgets/movies/movies.ui
@@ -44,6 +52,8 @@ target_include_directories(Certa.dev PRIVATE
     ${CMAKE_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/presentationLayer/layout
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/home
+    ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/auth
+    ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/auth/interestsDialog
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/movies
 )
 

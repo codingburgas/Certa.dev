@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Auth</class>
+ <widget class="QWidget" name="Auth">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>480</width>
+    <height>560</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>480</width>
+    <height>560</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Auth</string>
+  </property>
+  <widget class="QStackedWidget" name="authStackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>480</width>
+     <height>560</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="QWidget" name="page_signin">
+    <property name="styleSheet">
+     <string notr="true">background-color: #0F0F11;</string>
+    </property>
+    <widget class="QWidget" name="signin_banner" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>480</width>
+       <height>100</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #181818;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="signin_titleLabel">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>30</y>
+       <width>200</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFFFFF; font-size: 24px; font-weight: bold; background: transparent;</string>
+     </property>
+     <property name="text">
+      <string>Sign In</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="signin_usernameLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>120</y>
+       <width>400</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFFFFF; font-size: 14px; background: transparent;</string>
+     </property>
+     <property name="text">
+      <string>Username</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="signin_usernameLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>150</y>
+       <width>400</width>
+       <height>36</height>
+      </rect>
+     </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit { background-color: #181818; border: 1px solid #181818; border-radius: 6px; padding-left: 10px; font-size: 14px; color: #FFFFFF; } QLineEdit:focus { border: 1px solid #AE1A19; } QLineEdit::placeholder { color: #6C6C6E; }</string>
+      </property>
+     <property name="placeholderText">
+      <string>Username</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="signin_passwordLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>200</y>
+       <width>400</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFFFFF; font-size: 14px; background: transparent;</string>
+     </property>
+     <property name="text">
+      <string>Password</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="signin_passwordLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>230</y>
+       <width>400</width>
+       <height>36</height>
+      </rect>
+     </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit { background-color: #181818; border: 1px solid #181818; border-radius: 6px; padding-left: 10px; font-size: 14px; color: #FFFFFF; } QLineEdit:focus { border: 1px solid #AE1A19; } QLineEdit::placeholder { color: #6C6C6E; }</string>
+      </property>
+     <property name="echoMode">
+      <enum>QLineEdit::EchoMode::Password</enum>
+     </property>
+     <property name="placeholderText">
+      <string>Password</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="signin_signInButton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>290</y>
+       <width>400</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton { background-color: #AE1A19; color: #FFFFFF; border: none; border-radius: 8px; font-size: 16px; height: 40px; } QPushButton:hover { background-color: #951615; }</string>
+     </property>
+     <property name="text">
+      <string>Sign In</string>
+     </property>
+     <property name="autoDefault">
+      <bool>true</bool>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="signin_switchButton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>335</y>
+       <width>400</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton { background: transparent; color: #AE1A19; border: none; font-size: 13px; text-decoration: underline; } QPushButton:hover { color: #951615; }</string>
+     </property>
+     <property name="text">
+      <string>Don't have an account? Sign Up</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="signin_backButton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>370</y>
+       <width>400</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton { background-color: transparent; color: #FFFFFF; border: 1px solid #181818; border-radius: 8px; font-size: 14px; height: 36px; } QPushButton:hover { background-color: #181818; border: 1px solid #AE1A19; }</string>
+     </property>
+     <property name="text">
+      <string>Back To Home</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="signin_errorLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>100</y>
+       <width>400</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #EF4444; border-radius: 4px; font-size: 13px; padding-left: 8px; padding-right: 8px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_signup">
+    <property name="styleSheet">
+     <string notr="true">background-color: #0F0F11;</string>
+    </property>
+    <widget class="QWidget" name="signup_banner" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>480</width>
+       <height>100</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #181818;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="signup_titleLabel">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>30</y>
+       <width>200</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFFFFF; font-size: 24px; font-weight: bold; background: transparent;</string>
+     </property>
+     <property name="text">
+      <string>Sign Up</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="signup_usernameLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>120</y>
+       <width>400</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFFFFF; font-size: 14px; background: transparent;</string>
+     </property>
+     <property name="text">
+      <string>Username</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="signup_usernameLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>150</y>
+       <width>400</width>
+       <height>36</height>
+      </rect>
+     </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit { background-color: #181818; border: 1px solid #181818; border-radius: 6px; padding-left: 10px; font-size: 14px; color: #FFFFFF; } QLineEdit:focus { border: 1px solid #AE1A19; } QLineEdit::placeholder { color: #6C6C6E; }</string>
+      </property>
+     <property name="placeholderText">
+      <string>Username</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="signup_passwordLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>200</y>
+       <width>400</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFFFFF; font-size: 14px; background: transparent;</string>
+     </property>
+     <property name="text">
+      <string>Password</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="signup_passwordLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>230</y>
+       <width>400</width>
+       <height>36</height>
+      </rect>
+     </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit { background-color: #181818; border: 1px solid #181818; border-radius: 6px; padding-left: 10px; font-size: 14px; color: #FFFFFF; } QLineEdit:focus { border: 1px solid #AE1A19; } QLineEdit::placeholder { color: #6C6C6E; }</string>
+      </property>
+     <property name="echoMode">
+      <enum>QLineEdit::EchoMode::Password</enum>
+     </property>
+     <property name="placeholderText">
+      <string>Password</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="signup_confirmPasswordLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>270</y>
+       <width>400</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFFFFF; font-size: 14px; background: transparent;</string>
+     </property>
+     <property name="text">
+      <string>Confirm Password</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="signup_confirmPasswordLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>300</y>
+       <width>400</width>
+       <height>36</height>
+      </rect>
+     </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit { background-color: #181818; border: 1px solid #181818; border-radius: 6px; padding-left: 10px; font-size: 14px; color: #FFFFFF; } QLineEdit:focus { border: 1px solid #AE1A19; } QLineEdit::placeholder { color: #6C6C6E; }</string>
+      </property>
+     <property name="echoMode">
+      <enum>QLineEdit::EchoMode::Password</enum>
+     </property>
+     <property name="placeholderText">
+      <string>Confirm Password</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="signup_signUpButton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>350</y>
+       <width>400</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton { background-color: #AE1A19; color: #FFFFFF; border: none; border-radius: 8px; font-size: 16px; height: 40px; } QPushButton:hover { background-color: #951615; }</string>
+     </property>
+     <property name="text">
+      <string>Sign Up</string>
+     </property>
+     <property name="autoDefault">
+      <bool>true</bool>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="signup_switchButton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>395</y>
+       <width>400</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton { background: transparent; color: #AE1A19; border: none; font-size: 13px; text-decoration: underline; } QPushButton:hover { color: #951615; }</string>
+     </property>
+     <property name="text">
+      <string>Already have an account? Sign In</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="signup_backButton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>425</y>
+       <width>400</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton { background-color: transparent; color: #FFFFFF; border: 1px solid #181818; border-radius: 8px; font-size: 14px; height: 36px; } QPushButton:hover { background-color: #181818; border: 1px solid #AE1A19; }</string>
+     </property>
+     <property name="text">
+      <string>Back To Home</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="signup_errorLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>100</y>
+       <width>400</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #EF4444; border-radius: 4px; font-size: 13px; padding-left: 8px; padding-right: 8px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>InterestsDialog</class>
+ <widget class="QWidget" name="InterestsDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>760</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>760</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>760</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Interests</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#InterestsDialog {
+    background-color: #0F0F11;
+}
+QLabel#titleLabel {
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+QLabel#subtitleLabel {
+    color: #6C6C6E;
+    font-size: 14px;
+    font-weight: 500;
+}
+QWidget#genresContainer {
+    background-color: #181818;
+    border: 1px solid #181818;
+    border-radius: 14px;
+}
+QCheckBox {
+    color: #FFFFFF;
+    spacing: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 6px 8px;
+    margin: 0px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+}
+QCheckBox:checked {
+    color: #FFFFFF;
+    background-color: #181818;
+    border-color: #AE1A19;
+    font-weight: 700;
+}
+QPushButton {
+    min-height: 40px;
+    padding: 0 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+}
+QPushButton#skipButton {
+    color: #6C6C6E;
+    background-color: #0F0F11;
+    border: 1px solid #181818;
+}
+QPushButton#skipButton:hover {
+    color: #FFFFFF;
+    border-color: #6C6C6E;
+}
+QPushButton#saveButton {
+    color: #FFFFFF;
+    background-color: #AE1A19;
+    border: 1px solid #AE1A19;
+}
+QPushButton#saveButton:hover {
+    background-color: #951615;
+    border-color: #951615;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>24</number>
+   </property>
+   <property name="topMargin">
+    <number>24</number>
+   </property>
+   <property name="rightMargin">
+    <number>24</number>
+   </property>
+   <property name="bottomMargin">
+    <number>24</number>
+   </property>
+   <property name="spacing">
+    <number>14</number>
+   </property>
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="text">
+       <string>Which movie genres do you prefer?</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="subtitleLabel">
+     <property name="text">
+      <string>Pick your interests to personalize your recommendations.</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="genresContainer" native="true">
+     <layout class="QVBoxLayout" name="genresContainerLayout">
+      <property name="leftMargin">
+       <number>20</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
+       <number>20</number>
+      </property>
+      <property name="bottomMargin">
+       <number>20</number>
+      </property>
+      <property name="spacing">
+       <number>12</number>
+      </property>
+      <item>
+        <layout class="QGridLayout" name="genresGridLayout">
+         <property name="horizontalSpacing">
+          <number>14</number>
+         </property>
+         <property name="verticalSpacing">
+          <number>10</number>
+         </property>
+        </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="actionsLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="skipButton">
+       <property name="minimumSize">
+        <size>
+         <width>90</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Skip</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="saveButton">
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Save</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
