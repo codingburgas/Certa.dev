@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.19)
 project(Certa.dev LANGUAGES CXX)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets Sql)
 
 qt_standard_project_setup()
 
@@ -12,8 +12,10 @@ set(CMAKE_AUTORCC ON)
 set(PROJECT_SOURCES
     main.cpp
 
+
     assets/resources.qrc
     assets/Certadev.db
+
 
     presentationLayer/theme/color_theme.json
 
@@ -36,6 +38,42 @@ set(PROJECT_SOURCES
     presentationLayer/widgets/movies/movies.cpp
     presentationLayer/widgets/movies/movies.h
     presentationLayer/widgets/movies/movies.ui
+
+
+    serviceLayer/userSession/userSession.cpp
+    serviceLayer/userSession/userSession.h
+
+    serviceLayer/authService/authService.cpp
+    serviceLayer/authService/authService.h
+
+    serviceLayer/userService/userService.cpp
+    serviceLayer/userService/userService.h
+
+    serviceLayer/movieService/movieService.cpp
+    serviceLayer/movieService/movieService.h
+
+
+    dataAccessLayer/database/database.cpp
+    dataAccessLayer/database/database.h
+
+    dataAccessLayer/authRepository/authRepository.cpp
+    dataAccessLayer/authRepository/authRepository.h
+
+    dataAccessLayer/userRepository/userRepository.cpp
+    dataAccessLayer/userRepository/userRepository.h
+
+    dataAccessLayer/movieRepository/movieRepository.cpp
+    dataAccessLayer/movieRepository/movieRepository.h
+
+    models/user/user.h
+    models/user/userResponse.h
+    models/user/userStatus.h
+
+    models/auth/authStatus.h
+    models/auth/authResponse.h
+
+    models/movie/movieStatus.h
+    models/movie/movieResponse.h
 )
 
 qt_add_executable(Certa.dev
@@ -46,15 +84,32 @@ qt_add_executable(Certa.dev
 target_link_libraries(Certa.dev PRIVATE
     Qt::Core
     Qt::Widgets
+    Qt::Sql
 )
 
 target_include_directories(Certa.dev PRIVATE
     ${CMAKE_SOURCE_DIR}
+
     ${CMAKE_SOURCE_DIR}/presentationLayer/layout
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/home
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/auth
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/auth/interestsDialog
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/movies
+
+    ${CMAKE_SOURCE_DIR}/serviceLayer/userSession
+    ${CMAKE_SOURCE_DIR}/serviceLayer/authService
+    ${CMAKE_SOURCE_DIR}/serviceLayer/userService
+    ${CMAKE_SOURCE_DIR}/serviceLayer/movieService
+
+    ${CMAKE_SOURCE_DIR}/dataAccessLayer/database
+    ${CMAKE_SOURCE_DIR}/dataAccessLayer/authRepository
+    ${CMAKE_SOURCE_DIR}/dataAccessLayer/userRepository
+    ${CMAKE_SOURCE_DIR}/dataAccessLayer/movieRepository
+
+    ${CMAKE_SOURCE_DIR}/models
+    ${CMAKE_SOURCE_DIR}/models/auth
+    ${CMAKE_SOURCE_DIR}/models/user
+    ${CMAKE_SOURCE_DIR}/models/movie
 )
 
 include(GNUInstallDirs)
