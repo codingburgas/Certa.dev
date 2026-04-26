@@ -1,17 +1,22 @@
 #include "interestsDialog.h"
 #include <QCheckBox>
 #include "layout.h"
+#include "movieService.h"
 #include "ui_interestsDialog.h"
+#include "userService.h"
+#include "userSession.h"
 
 InterestsDialog::InterestsDialog(QWidget *parent) : QWidget(parent), ui(new Ui::InterestsDialog) {
     ui->setupUi(this);
 
-    // TODO fetch genres from db later
-    const QVector<QString> genres = {
-        "Action", "Adventure", "Animation", "Biography", "Comedy", "Crime",
-        "Documentary", "Drama", "Family", "Fantasy", "History", "Horror",
-        "Music", "Mystery", "Romance", "Science Fiction", "Sport", "Thriller"
-    };
+    MovieResponse genresResponse = MovieService::getAllGenres();
+
+    if (!genresResponse.success) {
+        qDebug() << genresResponse.errorMessage;
+        return;
+    }
+
+    const QVector<QString> genres = genresResponse.data;
 
     for (int i = ui->genresGridLayout->count() - 1; i >= 0; i--) {
         QLayoutItem *item = ui->genresGridLayout->takeAt(i);
@@ -52,7 +57,16 @@ void InterestsDialog::on_saveButton_clicked() {
         }
     }
 
-    // TODO save selectedGenres to db later
+    const QString username = UserSession::instance().getCurrentUser()->username;
+
+    UserResponse saveResponse = UserService::saveInterestsGenre(username, selectedGenres);
+
+    if (!saveResponse.success) {
+        qDebug() << saveResponse.errorMessage;
+        return;
+    }
+
+    UserSession::instance().setInterestsGenres(selectedGenres);
 
     this->hide();
     auto layout = new Layout();
@@ -60,7 +74,14 @@ void InterestsDialog::on_saveButton_clicked() {
 }
 
 void InterestsDialog::on_skipButton_clicked() {
-    // TODO use empty list to save in db later
+    const QString username = UserSession::instance().getCurrentUser()->username;
+
+    UserResponse skipResponse = UserService::saveInterestsGenre(username, {});
+
+    if (!skipResponse.success) {
+        qDebug() << skipResponse.errorMessage;
+        return;
+    }
 
     this->hide();
     auto layout = new Layout();

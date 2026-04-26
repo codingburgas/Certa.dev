@@ -1,6 +1,6 @@
 #include "auth.h"
-#include <QMessageBox>
 #include <QString>
+#include "authService.h"
 #include "interestsDialog.h"
 #include "layout.h"
 #include "ui_auth.h"
@@ -51,6 +51,13 @@ void Auth::on_signin_signInButton_clicked() {
         return;
     }
 
+    AuthResponse authResponse = AuthService::signIn(username, password);
+
+    if (!authResponse.success) {
+        ui->signin_errorLabel->setText(authResponse.errorMessage);
+        return;
+    }
+
     redirectToLayout();
 }
 
@@ -81,15 +88,16 @@ void Auth::on_signup_signUpButton_clicked() {
         return;
     }
 
-    QMessageBox::information(this,
-                             "Sign Up Successful",
-                             "Your account has been created. Please sign in.\nUsername: " + username + "\nPassword: " + password);
+    AuthResponse authResponse = AuthService::signUp(username, password);
+
+    if (!authResponse.success) {
+        ui->signup_errorLabel->setText(authResponse.errorMessage);
+        return;
+    }
 
     this->hide();
     auto interestsDialog = new InterestsDialog();
     interestsDialog->show();
-
-    ui->authStackedWidget->setCurrentIndex(SignIn);
 }
 
 void Auth::on_signin_switchButton_clicked() {
