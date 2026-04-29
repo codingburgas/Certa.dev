@@ -11,6 +11,9 @@ Layout::Layout(QWidget *parent) : QMainWindow(parent), ui(new Ui::Layout) {
     moviesPage = new Movies(this);
     ui->moviesPageLayout->addWidget(moviesPage);
 
+    settingsPage = new Settings(this);
+    ui->settingsPageLayout->addWidget(settingsPage);
+
     on_sidebarHomeButton_clicked();
 }
 
@@ -42,4 +45,5 @@ void Layout::on_sidebarAuthButton_clicked() {
 
 void Layout::on_sidebarSettingsButton_clicked() {
     setNavActive(NavCurrentButtonIndex::Settings);
+    ui->stackedWidget->setCurrentWidget(ui->settingsStackPage);
 }

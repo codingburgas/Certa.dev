@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Settings</class>
+ <widget class="QWidget" name="Settings">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>750</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>750</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Settings</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#Settings {
+    background-color: #0F0F11;
+}
+QLabel {
+    color: #FFFFFF;
+    font-size: 14px;
+}
+QScrollArea {
+    background-color: transparent;
+}
+QWidget#settingsScrollContent,
+QWidget#termsScrollContent,
+QWidget#privacyScrollContent {
+    background-color: transparent;
+}
+QLabel#settingsTitleLabel,
+QLabel#accountSectionLabel,
+QLabel#profileSectionLabel,
+QLabel#legalSectionLabel,
+QLabel#dangerSectionLabel,
+QLabel#termsTitleLabel,
+QLabel#privacyTitleLabel {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 700;
+}
+QLabel#termsContentLabel,
+QLabel#privacyContentLabel {
+    color: #E6E6E6;
+    font-size: 14px;
+    line-height: 1.35;
+}
+QLabel#settingsNoticeLabel,
+QLabel#usernameStatusLabel,
+QLabel#passwordStatusLabel,
+QLabel#interestsStatusLabel,
+QLabel#deleteStatusLabel,
+QLabel#accountHintLabel,
+QLabel#profileHintLabel,
+QLabel#dangerHintLabel {
+    color: #6C6C6E;
+    font-size: 12px;
+}
+QWidget#accountCard,
+QWidget#profileCard,
+QWidget#legalCard {
+    background-color: #181818;
+    border-radius: 12px;
+}
+QWidget#dangerCard {
+    background-color: #2A1212;
+    border-radius: 12px;
+}
+QLineEdit {
+    background-color: #0F0F11;
+    color: #FFFFFF;
+    border: 1px solid #2A2A2A;
+    border-radius: 8px;
+    padding: 8px 10px;
+}
+QCheckBox {
+    color: #FFFFFF;
+    spacing: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 6px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+}
+QCheckBox:checked {
+    border-color: #AE1A19;
+}
+QPushButton#saveUsernameButton,
+QPushButton#savePasswordButton,
+QPushButton#saveInterestsButton,
+QPushButton#deleteAccountButton {
+    min-height: 36px;
+    padding: 0 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #AE1A19;
+    border: 1px solid #AE1A19;
+}
+QPushButton#saveUsernameButton:hover,
+QPushButton#savePasswordButton:hover,
+QPushButton#saveInterestsButton:hover,
+QPushButton#deleteAccountButton:hover {
+    background-color: #951615;
+    border-color: #951615;
+}
+QPushButton#termsViewButton,
+QPushButton#privacyViewButton,
+QPushButton#termsBackButton,
+QPushButton#privacyBackButton {
+    min-height: 34px;
+    padding: 0 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background-color: #0F0F11;
+    border: 1px solid #2A2A2A;
+}
+QPushButton#termsViewButton:hover,
+QPushButton#privacyViewButton:hover,
+QPushButton#termsBackButton:hover,
+QPushButton#privacyBackButton:hover {
+    border-color: #6C6C6E;
+}
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="rootLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QStackedWidget" name="settingsStackedWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="mainSettingsPage">
+      <layout class="QVBoxLayout" name="mainPageLayout">
+       <property name="leftMargin">
+        <number>24</number>
+       </property>
+       <property name="topMargin">
+        <number>24</number>
+       </property>
+       <property name="rightMargin">
+        <number>24</number>
+       </property>
+       <property name="bottomMargin">
+        <number>24</number>
+       </property>
+       <property name="spacing">
+        <number>14</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="settingsTitleLabel">
+         <property name="text">
+          <string>Settings</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="settingsNoticeLabel">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QScrollArea" name="settingsScrollArea">
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="settingsScrollContent">
+          <layout class="QVBoxLayout" name="settingsContentLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <property name="spacing">
+            <number>18</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="accountSectionLabel">
+             <property name="text">
+              <string>Account</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="accountCard" native="true">
+             <layout class="QVBoxLayout" name="accountCardLayout">
+              <property name="leftMargin">
+               <number>16</number>
+              </property>
+              <property name="topMargin">
+               <number>16</number>
+              </property>
+              <property name="rightMargin">
+               <number>16</number>
+              </property>
+              <property name="bottomMargin">
+               <number>16</number>
+              </property>
+              <property name="spacing">
+               <number>10</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="accountHintLabel">
+                <property name="text">
+                 <string>Update your username and password.</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="usernameLayout">
+                <item>
+                 <widget class="QLineEdit" name="usernameLineEdit">
+                  <property name="placeholderText">
+                   <string>Username</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="saveUsernameButton">
+                  <property name="text">
+                   <string>Save Username</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLabel" name="usernameStatusLabel">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="passwordTitleLabel">
+                <property name="text">
+                 <string>Change password</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="passwordGridLayout">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="currentPasswordLabel">
+                  <property name="text">
+                   <string>Current password</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLineEdit" name="currentPasswordLineEdit">
+                  <property name="echoMode">
+                   <enum>QLineEdit::Password</enum>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Current password</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="newPasswordLabel">
+                  <property name="text">
+                   <string>New password</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLineEdit" name="newPasswordLineEdit">
+                  <property name="echoMode">
+                   <enum>QLineEdit::Password</enum>
+                  </property>
+                  <property name="placeholderText">
+                   <string>New password</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="confirmPasswordLabel">
+                  <property name="text">
+                   <string>Confirm new password</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLineEdit" name="confirmPasswordLineEdit">
+                  <property name="echoMode">
+                   <enum>QLineEdit::Password</enum>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Confirm new password</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="passwordActionsLayout">
+                <item>
+                 <spacer name="passwordSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="savePasswordButton">
+                  <property name="text">
+                   <string>Save Password</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLabel" name="passwordStatusLabel">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="profileSectionLabel">
+             <property name="text">
+              <string>Profile</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="profileCard" native="true">
+             <layout class="QVBoxLayout" name="profileCardLayout">
+              <property name="leftMargin">
+               <number>16</number>
+              </property>
+              <property name="topMargin">
+               <number>16</number>
+              </property>
+              <property name="rightMargin">
+               <number>16</number>
+              </property>
+              <property name="bottomMargin">
+               <number>16</number>
+              </property>
+              <property name="spacing">
+               <number>12</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="profileHintLabel">
+                <property name="text">
+                 <string>Pick your interests to personalize your recommendations.</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="genresGridLayout">
+                <property name="horizontalSpacing">
+                 <number>12</number>
+                </property>
+                <property name="verticalSpacing">
+                 <number>10</number>
+                </property>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="interestsActionsLayout">
+                <item>
+                 <spacer name="interestsSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="saveInterestsButton">
+                  <property name="text">
+                   <string>Save Interests</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLabel" name="interestsStatusLabel">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="legalSectionLabel">
+             <property name="text">
+              <string>Legal</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="legalCard" native="true">
+             <layout class="QVBoxLayout" name="legalCardLayout">
+              <property name="leftMargin">
+               <number>16</number>
+              </property>
+              <property name="topMargin">
+               <number>16</number>
+              </property>
+              <property name="rightMargin">
+               <number>16</number>
+              </property>
+              <property name="bottomMargin">
+               <number>16</number>
+              </property>
+              <property name="spacing">
+               <number>12</number>
+              </property>
+              <item>
+               <layout class="QHBoxLayout" name="termsRowLayout">
+                <item>
+                 <widget class="QLabel" name="termsLabel">
+                  <property name="text">
+                   <string>Terms and Conditions</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="termsSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="termsViewButton">
+                  <property name="text">
+                   <string>View &gt;</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="privacyRowLayout">
+                <item>
+                 <widget class="QLabel" name="privacyLabel">
+                  <property name="text">
+                   <string>Privacy Policy</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="privacySpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="privacyViewButton">
+                  <property name="text">
+                   <string>View &gt;</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="dangerSectionLabel">
+             <property name="text">
+              <string>Danger Zone</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="dangerCard" native="true">
+             <layout class="QVBoxLayout" name="dangerCardLayout">
+              <property name="leftMargin">
+               <number>16</number>
+              </property>
+              <property name="topMargin">
+               <number>16</number>
+              </property>
+              <property name="rightMargin">
+               <number>16</number>
+              </property>
+              <property name="bottomMargin">
+               <number>16</number>
+              </property>
+              <property name="spacing">
+               <number>12</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="dangerHintLabel">
+                <property name="text">
+                 <string>Delete your account permanently. This action is irreversible.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="dangerActionLayout">
+                <item>
+                 <spacer name="dangerSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="deleteAccountButton">
+                  <property name="text">
+                   <string>Delete my account</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLabel" name="deleteStatusLabel">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <spacer name="bottomSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="termsPage">
+      <layout class="QVBoxLayout" name="termsPageLayout">
+       <property name="leftMargin">
+        <number>24</number>
+       </property>
+       <property name="topMargin">
+        <number>24</number>
+       </property>
+       <property name="rightMargin">
+        <number>24</number>
+       </property>
+       <property name="bottomMargin">
+        <number>24</number>
+       </property>
+       <property name="spacing">
+        <number>14</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="termsHeaderLayout">
+         <item>
+          <widget class="QPushButton" name="termsBackButton">
+           <property name="text">
+            <string>&lt; Back to Settings</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="termsHeaderSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="termsTitleLabel">
+         <property name="text">
+          <string>Terms and Conditions</string>
+         </property>
+        </widget>
+       </item>
+        <item>
+         <widget class="QScrollArea" name="termsScrollArea">
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="termsScrollContent">
+           <layout class="QVBoxLayout" name="termsContentLayout">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="termsContentLabel">
+              <property name="text">
+               <string>Last updated May 2026
+
+  Terms and Conditions
+
+  Welcome to our Movie Recommendation System (“we,” “our,” or “the Service”). By accessing or using our platform, you agree to comply with and be bound by the following Terms and Conditions.
+
+  1. Use of the Service
+
+  The Service allows users to select their interests (such as genres, actors, or themes) and receive movie recommendations based on those preferences.
+
+  You agree to use the Service only for lawful purposes and in accordance with these Terms.
+
+  2. User Responsibilities
+
+  By using the Service, you agree that you will:
+
+  Provide accurate inputs where applicable
+  Not misuse, disrupt, or attempt to interfere with the system
+  Not attempt to reverse-engineer or exploit the recommendation algorithm
+  Comply with all applicable laws and regulations
+
+  3. Intellectual Property
+
+  All content, features, and functionality of the Service—including design, text, graphics, and algorithms—are owned by us or our licensors and are protected by applicable intellectual property laws.
+
+  You may not copy, modify, distribute, or reproduce any part of the Service without prior written permission.
+
+  4. Recommendations Disclaimer
+
+  The movie recommendations provided by the Service are generated automatically based on user-selected interests.
+
+  We do not guarantee accuracy, completeness, or relevance of recommendations
+  Recommendations are for informational and entertainment purposes only
+  We are not responsible for user satisfaction with suggested content
+
+  5. Third-Party Content
+
+  The Service may reference or link to third-party movie databases, platforms, or websites.
+
+  We do not control and are not responsible for:
+
+  The content or availability of third-party services
+  Any damages or issues arising from their use
+
+  6. Limitation of Liability
+
+  To the fullest extent permitted by law, we shall not be liable for:
+
+  Any direct, indirect, incidental, or consequential damages
+  Loss of data, profits, or use resulting from the Service
+  Errors, interruptions, or inaccuracies in recommendations
+
+  Use of the Service is at your own risk.
+
+  7. Termination
+
+  We reserve the right to suspend or terminate access to the Service at any time, without prior notice, if you violate these Terms or misuse the platform.
+
+  8. Changes to the Terms
+
+  We may update these Terms and Conditions from time to time. Continued use of the Service after changes are posted constitutes acceptance of the updated Terms.
+
+  9. Governing Law
+
+  These Terms shall be governed by and interpreted in accordance with applicable laws, without regard to conflict of law principles.
+
+  10. Contact Information
+
+  If you have any questions about these Terms and Conditions, please contact us at:
+
+  Email: certadev@gmail.com</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="privacyPage">
+       <layout class="QVBoxLayout" name="privacyPageLayout">
+        <property name="leftMargin">
+         <number>24</number>
+        </property>
+        <property name="topMargin">
+         <number>24</number>
+        </property>
+        <property name="rightMargin">
+         <number>24</number>
+        </property>
+        <property name="bottomMargin">
+         <number>24</number>
+        </property>
+        <property name="spacing">
+         <number>14</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="privacyHeaderLayout">
+          <item>
+           <widget class="QPushButton" name="privacyBackButton">
+            <property name="text">
+             <string>&lt; Back to Settings</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="privacyHeaderSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="privacyTitleLabel">
+          <property name="text">
+           <string>Privacy Policy</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QScrollArea" name="privacyScrollArea">
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="privacyScrollContent">
+           <layout class="QVBoxLayout" name="privacyContentLayout">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="privacyContentLabel">
+              <property name="text">
+               <string>Privacy Policy
+
+  1. Information We Collect
+
+  When you use our Service, we may collect the following types of information:
+
+  a) Information You Provide
+  Preferences and interests you select (e.g., genres, actors, themes)
+  Optional user inputs such as ratings or feedback
+
+  b) Automatically Collected Information
+  Device information (browser type, operating system)
+  Usage data (pages visited, interactions within the system)
+  Cookies and similar tracking technologies
+
+  2. How We Use Your Information
+
+  We use the collected data to:
+
+  Provide personalized movie recommendations based on your selected interests
+  Improve the accuracy and performance of our recommendation algorithm
+  Analyze usage trends and enhance user experience
+  Maintain and secure the platform
+
+  3. Cookies and Tracking Technologies
+
+  We may use cookies to:
+
+  Remember your selected preferences
+  Enhance functionality and user experience
+  Analyze system performance
+
+  You can disable cookies through your browser settings, but some features of the Service may not function properly.
+
+  4. Data Sharing and Disclosure
+
+  We do not sell, trade, or rent your personal data. We may share information only in the following cases:
+
+  With service providers who help operate the system (under strict confidentiality)
+  If required by law or legal processes
+  To protect the rights, safety, and integrity of the Service
+
+  5. Data Storage and Security
+
+  We take appropriate technical and organizational measures to protect your data against unauthorized access, loss, or misuse. However, no system is completely secure, and we cannot guarantee absolute security.
+
+  6. Data Retention
+
+  We retain your information only as long as necessary to:
+
+  Provide recommendations
+  Improve the Service
+  Comply with legal obligations
+
+  You may request deletion of your data at any time.
+
+  7. Your Rights
+
+  Depending on your location, you may have the right to:
+
+  Access your stored data
+  Request correction or deletion
+  Withdraw consent for data processing
+  Object to certain uses of your data
+
+  To exercise these rights, please contact us.
+
+  8. Third-Party Links
+
+  Our Service may contain links to third-party websites or movie databases. We are not responsible for their privacy practices.
+
+  9. Changes to This Policy
+
+  We may update this Privacy Policy from time to time. Any changes will be reflected with an updated date at the top of this page.
+
+  10. Contact Us
+
+  If you have any questions or concerns about this Privacy Policy, you can contact us at:
+
+  Email: certadev@example.com</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <resources/>
+  <connections/>
+  </ui>

@@ -39,6 +39,10 @@ set(PROJECT_SOURCES
     presentationLayer/widgets/movies/movies.h
     presentationLayer/widgets/movies/movies.ui
 
+    presentationLayer/widgets/settings/settings.cpp
+    presentationLayer/widgets/settings/settings.h
+    presentationLayer/widgets/settings/settings.ui
+
 
     serviceLayer/userSession/userSession.cpp
     serviceLayer/userSession/userSession.h
@@ -99,6 +103,7 @@ target_include_directories(Certa.dev PRIVATE
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/auth
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/auth/interestsDialog
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/movies
+    ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/settings
 
     ${CMAKE_SOURCE_DIR}/serviceLayer/userSession
     ${CMAKE_SOURCE_DIR}/serviceLayer/authService

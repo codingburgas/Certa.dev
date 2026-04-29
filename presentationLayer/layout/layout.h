@@ -4,6 +4,7 @@
 
 #include "home.h"
 #include "movies.h"
+#include "settings.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -41,4 +42,5 @@ private:
     Ui::Layout *ui;
     Home *homePage;
     Movies *moviesPage;
+    Settings *settingsPage;
 };
