@@ -21,9 +21,44 @@
     color: #FFFFFF;
     font-size: 20px;
     font-weight: 600;
+}
+QScrollArea {
+    border: none;
+    background-color: transparent;
+}
+QScrollArea > QWidget#qt_scrollarea_viewport {
+    background-color: transparent;
+}
+#scrollContent {
+    background-color: transparent;
+}
+QFrame#movieCard {
+    background-color: #181818;
+    border-radius: 8px;
+    border: 1px solid #181818;
+}
+QLabel#movieCardTitle {
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+}
+QLabel#movieCardGenres {
+    color: #6C6C6E;
+    font-size: 11px;
+}
+QLabel#movieCardRating {
+    color: #FFFFFF;
+    font-size: 12px;
+}
+QLabel#movieCardReviews {
+    color: #6C6C6E;
+    font-size: 12px;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="moviesLayout">
+   <property name="spacing">
+    <number>16</number>
+   </property>
    <property name="leftMargin">
     <number>24</number>
    </property>
@@ -39,11 +74,40 @@
    <item>
     <widget class="QLabel" name="moviesTitleLabel">
      <property name="text">
-      <string>This is the movies page</string>
+      <string>Movies</string>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
+    </widget>
+   </item>
+   <item>
+    <widget class="QScrollArea" name="moviesScrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
      </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <widget class="QWidget" name="scrollContent">
+      <layout class="QGridLayout" name="moviesGrid">
+       <property name="horizontalSpacing">
+        <number>24</number>
+       </property>
+       <property name="verticalSpacing">
+        <number>32</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+      </layout>
+     </widget>
     </widget>
    </item>
   </layout>

@@ -4,4 +4,5 @@
 
 namespace MovieRepository {
     MovieResponse getAllGenres();
+    GetMoviesResponse getAllMovies();
 }

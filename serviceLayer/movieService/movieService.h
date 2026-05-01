@@ -4,4 +4,5 @@
 
 namespace MovieService {
     MovieResponse getAllGenres();
+    GetMoviesResponse getAllMovies();
 }

@@ -83,6 +83,7 @@ set(PROJECT_SOURCES
     models/auth/authStatus.h
     models/auth/authResponse.h
 
+    models/movie/movie.h
     models/movie/movieStatus.h
     models/movie/movieResponse.h
 )

@@ -5,4 +5,8 @@ namespace MovieService {
     MovieResponse getAllGenres() {
         return MovieRepository::getAllGenres();
     }
+
+    GetMoviesResponse getAllMovies() {
+        return MovieRepository::getAllMovies();
+    }
 }
