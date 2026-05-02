@@ -7,35 +7,35 @@
         <file>icons/comments.svg</file>
         <file>icons/star.svg</file>
 
-        <file>posters/alien.png</file>
-        <file>posters/avatar.png</file>
-        <file>posters/avengers_endgame.png</file>
-        <file>posters/back_to_the_future.png</file>
-        <file>posters/casablanca.png</file>
-        <file>posters/fight_club.png</file>
-        <file>posters/forrest_gump.png</file>
-        <file>posters/gladiator.png</file>
-        <file>posters/inception.png</file>
-        <file>posters/interstellar.png</file>
-        <file>posters/joker.png</file>
-        <file>posters/jurassic_park.png</file>
-        <file>posters/mad_max_fury_road.png</file>
-        <file>posters/parasite.png</file>
-        <file>posters/pulp_fiction.png</file>
-        <file>posters/saving_private_ryan.png</file>
-        <file>posters/schindlers_list.png</file>
-        <file>posters/star_wars_episode_4_a_new_hope.png</file>
-        <file>posters/the_dark_knight.png</file>
-        <file>posters/the_departed.png</file>
-        <file>posters/the_god_father.png</file>
-        <file>posters/the_lion_king.png</file>
-        <file>posters/the_lord_of_the_rings_the_return_of_the_king.png</file>
-        <file>posters/the_matrix.png</file>
-        <file>posters/the_prestige.png</file>
-        <file>posters/the_shawshank_redemption.png</file>
-        <file>posters/the_silence_of_the_lambs.png</file>
-        <file>posters/the_wolf_of_wall_street.png</file>
-        <file>posters/titanic.png</file>
-        <file>posters/whiplash.png</file>
+        <file>posters/alien.jpg</file>
+        <file>posters/avatar.jpg</file>
+        <file>posters/avengers_endgame.jpg</file>
+        <file>posters/back_to_the_future.jpg</file>
+        <file>posters/casablanca.jpg</file>
+        <file>posters/fight_club.jpg</file>
+        <file>posters/forrest_gump.jpg</file>
+        <file>posters/gladiator.jpg</file>
+        <file>posters/inception.jpg</file>
+        <file>posters/interstellar.jpg</file>
+        <file>posters/joker.jpg</file>
+        <file>posters/jurassic_park.jpg</file>
+        <file>posters/mad_max_fury_road.jpg</file>
+        <file>posters/parasite.jpg</file>
+        <file>posters/pulp_fiction.jpg</file>
+        <file>posters/saving_private_ryan.jpg</file>
+        <file>posters/schindlers_list.jpg</file>
+        <file>posters/star_wars_episode_4_a_new_hope.jpg</file>
+        <file>posters/the_dark_knight.jpg</file>
+        <file>posters/the_departed.jpg</file>
+        <file>posters/the_god_father.jpg</file>
+        <file>posters/the_lion_king.jpg</file>
+        <file>posters/the_lord_of_the_rings_the_return_of_the_king.jpg</file>
+        <file>posters/the_matrix.jpg</file>
+        <file>posters/the_prestige.jpg</file>
+        <file>posters/the_shawshank_redemption.jpg</file>
+        <file>posters/the_silence_of_the_lambs.jpg</file>
+        <file>posters/the_wolf_of_wall_street.jpg</file>
+        <file>posters/titanic.jpg</file>
+        <file>posters/whiplash.jpg</file>
     </qresource>
 </RCC>

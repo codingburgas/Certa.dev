@@ -1,5 +1,6 @@
 #include "movies.h"
 #include <QPixmap>
+#include <QPixmapCache>
 #include "movieService.h"
 #include "ui_movies.h"
 
@@ -48,9 +49,22 @@ QWidget *Movies::createMovieCard(const Movie &movie) {
     posterLabel->setAlignment(Qt::AlignCenter);
     posterLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
 
-    QPixmap pixmap(movie.posterPath);
+    const qreal dpr = devicePixelRatioF();
+    const QString posterCacheKey = QStringLiteral("poster:%1@%2x%3")
+        .arg(movie.posterPath)
+        .arg(POSTER_HEIGHT)
+        .arg(dpr);
+    QPixmap pixmap;
+    if (!QPixmapCache::find(posterCacheKey, &pixmap)) {
+        QPixmap raw(movie.posterPath);
+        if (!raw.isNull()) {
+            pixmap = raw.scaledToHeight(static_cast<int>(POSTER_HEIGHT * dpr), Qt::SmoothTransformation);
+            pixmap.setDevicePixelRatio(dpr);
+            QPixmapCache::insert(posterCacheKey, pixmap);
+        }
+    }
     if (!pixmap.isNull()) {
-        posterLabel->setPixmap(pixmap.scaledToHeight(POSTER_HEIGHT, Qt::SmoothTransformation));
+        posterLabel->setPixmap(pixmap);
     }
 
     QWidget *infoWidget = new QWidget(card);
@@ -74,9 +88,19 @@ QWidget *Movies::createMovieCard(const Movie &movie) {
     statsLayout->setSpacing(4);
 
     QLabel *starIcon = new QLabel(statsRow);
-    QPixmap starPixmap(":/icons/star.svg");
+    const QString starCacheKey = QStringLiteral("icon:star@%1x%2").arg(ICON_SIZE).arg(dpr);
+    QPixmap starPixmap;
+    if (!QPixmapCache::find(starCacheKey, &starPixmap)) {
+        QPixmap rawStar(":/icons/star.svg");
+        if (!rawStar.isNull()) {
+            starPixmap = rawStar.scaled(static_cast<int>(ICON_SIZE * dpr), static_cast<int>(ICON_SIZE * dpr),
+                                        Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            starPixmap.setDevicePixelRatio(dpr);
+            QPixmapCache::insert(starCacheKey, starPixmap);
+        }
+    }
     if (!starPixmap.isNull()) {
-        starIcon->setPixmap(starPixmap.scaled(ICON_SIZE, ICON_SIZE, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        starIcon->setPixmap(starPixmap);
     }
     starIcon->setFixedSize(ICON_SIZE, ICON_SIZE);
 
@@ -84,9 +108,19 @@ QWidget *Movies::createMovieCard(const Movie &movie) {
     ratingLabel->setObjectName("movieCardRating");
 
     QLabel *commentsIcon = new QLabel(statsRow);
-    QPixmap commentsPixmap(":/icons/comments.svg");
+    const QString commentsCacheKey = QStringLiteral("icon:comments@%1x%2").arg(ICON_SIZE).arg(dpr);
+    QPixmap commentsPixmap;
+    if (!QPixmapCache::find(commentsCacheKey, &commentsPixmap)) {
+        QPixmap rawComments(":/icons/comments.svg");
+        if (!rawComments.isNull()) {
+            commentsPixmap = rawComments.scaled(static_cast<int>(ICON_SIZE * dpr), static_cast<int>(ICON_SIZE * dpr),
+                                                Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            commentsPixmap.setDevicePixelRatio(dpr);
+            QPixmapCache::insert(commentsCacheKey, commentsPixmap);
+        }
+    }
     if (!commentsPixmap.isNull()) {
-        commentsIcon->setPixmap(commentsPixmap.scaled(ICON_SIZE, ICON_SIZE, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        commentsIcon->setPixmap(commentsPixmap);
     }
     commentsIcon->setFixedSize(ICON_SIZE, ICON_SIZE);
 
