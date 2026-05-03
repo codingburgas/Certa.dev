@@ -24,6 +24,8 @@ signals:
 
     void exploreRecommendationsRequested();
 
+    void openFavoritesRequested();
+
     void movieClicked(int movieId);
 
 private slots:
@@ -31,13 +33,19 @@ private slots:
 
     void on_exploreMoreButton_clicked();
 
+    void on_openFavoritesButton_clicked();
+
 private:
     const int PREVIEW_LIMIT = 3;
     const int COLUMNS = 3;
 
     Ui::Home *ui;
 
-    void clearGrid();
+    void clearRecommendationsGrid();
+
+    void clearFavoritesGrid();
 
     void loadRecommendations();
+
+    void loadFavorites();
 };

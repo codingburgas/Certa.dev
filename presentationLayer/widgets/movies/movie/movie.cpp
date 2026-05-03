@@ -1,4 +1,5 @@
 #include "movie.h"
+#include <QIcon>
 #include <QPixmap>
 #include <QScrollBar>
 #include <QStyle>
@@ -32,6 +33,7 @@ void Movie::loadMovie(int movieId) {
     renderMovie(movieResponse.movie);
     renderReviews();
     refreshAuthState();
+    refreshFavoriteState();
 
     ui->reviewCommentEdit->clear();
     ui->reviewRatingSpinBox->setValue(8.0);
@@ -139,8 +141,50 @@ void Movie::refreshAuthState() {
     ui->signInNoticeLabel->setVisible(!isLoggedIn);
 }
 
+void Movie::refreshFavoriteState() {
+    const auto currentUser = UserSession::instance().getCurrentUser();
+    if (!currentUser.has_value() || currentMovieId < 0) {
+        ui->movieFavoriteButton->setVisible(false);
+        return;
+    }
+
+    ui->movieFavoriteButton->setVisible(true);
+
+    FavoriteStatusResponse status = MovieService::isFavorite(currentUser->username, currentMovieId);
+    updateFavoriteButton(status.success && status.isFavorite);
+}
+
+void Movie::updateFavoriteButton(bool isFavorite) {
+    ui->movieFavoriteButton->setChecked(isFavorite);
+    ui->movieFavoriteButton->setIcon(QIcon(isFavorite ? ":/icons/star-full.svg" : ":/icons/star.svg"));
+    ui->movieFavoriteButton->setText(isFavorite ? "  Favorited" : "  Favorite");
+}
+
 void Movie::on_movieBackButton_clicked() {
     emit backRequested();
+}
+
+void Movie::on_movieFavoriteButton_clicked() {
+    const auto currentUser = UserSession::instance().getCurrentUser();
+    if (!currentUser.has_value() || currentMovieId < 0) {
+        return;
+    }
+
+    FavoriteStatusResponse status = MovieService::isFavorite(currentUser->username, currentMovieId);
+    if (!status.success) {
+        updateFavoriteButton(false);
+        return;
+    }
+
+    if (status.isFavorite) {
+        FavoriteResponse response = MovieService::removeFavorite(currentUser->username, currentMovieId);
+        updateFavoriteButton(!response.success);
+    } else {
+        FavoriteResponse response = MovieService::addFavorite(currentUser->username, currentMovieId);
+        updateFavoriteButton(response.success);
+    }
+
+    emit favoriteToggled();
 }
 
 void Movie::on_submitReviewButton_clicked() {

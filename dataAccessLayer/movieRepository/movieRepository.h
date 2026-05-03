@@ -15,4 +15,12 @@ namespace MovieRepository {
                                 const QString &comment);
 
     GetReviewsResponse getReviewsForMovie(int movieId);
+
+    FavoriteStatusResponse isFavorite(const QString &username, int movieId);
+
+    FavoriteResponse addFavorite(const QString &username, int movieId);
+
+    FavoriteResponse removeFavorite(const QString &username, int movieId);
+
+    GetMoviesResponse getFavoriteMovies(const QString &username);
 }

@@ -26,4 +26,20 @@ namespace MovieService {
     GetReviewsResponse getReviewsForMovie(int movieId) {
         return MovieRepository::getReviewsForMovie(movieId);
     }
+
+    FavoriteStatusResponse isFavorite(const QString &username, int movieId) {
+        return MovieRepository::isFavorite(username, movieId);
+    }
+
+    FavoriteResponse addFavorite(const QString &username, int movieId) {
+        return MovieRepository::addFavorite(username, movieId);
+    }
+
+    FavoriteResponse removeFavorite(const QString &username, int movieId) {
+        return MovieRepository::removeFavorite(username, movieId);
+    }
+
+    GetMoviesResponse getFavoriteMovies(const QString &username) {
+        return MovieRepository::getFavoriteMovies(username);
+    }
 }

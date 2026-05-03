@@ -159,6 +159,25 @@ QLabel#reviewStatusLabel[state=&quot;success&quot;] {
 QLabel#signInNoticeLabel {
     color: #6C6C6E;
     font-size: 13px;
+}
+QPushButton#movieFavoriteButton {
+    color: #FFFFFF;
+    background-color: #181818;
+    border: 1px solid #181818;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+}
+QPushButton#movieFavoriteButton:hover {
+    background-color: #232325;
+    border-color: #2A2A2C;
+}
+QPushButton#movieFavoriteButton:checked {
+    background-color: #232325;
+    border-color: #FACC15;
+    color: #FACC15;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="moviePageRootLayout">
@@ -226,6 +245,25 @@ QLabel#signInNoticeLabel {
             </size>
            </property>
           </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="movieFavoriteButton">
+           <property name="text">
+            <string>  Favorite</string>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>16</width>
+             <height>16</height>
+            </size>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

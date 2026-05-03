@@ -11,6 +11,7 @@ Layout::Layout(QWidget *parent) : QMainWindow(parent), ui(new Ui::Layout) {
     ui->homePageLayout->addWidget(homePage);
     connect(homePage, &Home::signInRequested, this, &Layout::on_sidebarAuthButton_clicked);
     connect(homePage, &Home::exploreRecommendationsRequested, this, &Layout::on_sidebarRecommendationsButton_clicked);
+    connect(homePage, &Home::openFavoritesRequested, this, &Layout::on_sidebarFavoritesButton_clicked);
     connect(homePage, &Home::movieClicked, this, &Layout::openMovieFromOtherPage);
 
     moviesPage = new Movies(this);
@@ -19,6 +20,10 @@ Layout::Layout(QWidget *parent) : QMainWindow(parent), ui(new Ui::Layout) {
     recommendationsPage = new Recommendations(this);
     ui->recommendationsPageLayout->addWidget(recommendationsPage);
     connect(recommendationsPage, &Recommendations::movieClicked, this, &Layout::openMovieFromOtherPage);
+
+    favoritesPage = new Favorites(this);
+    ui->favoritesPageLayout->addWidget(favoritesPage);
+    connect(favoritesPage, &Favorites::movieClicked, this, &Layout::openMovieFromOtherPage);
 
     profilePage = new Profile(this);
     ui->profilePageLayout->addWidget(profilePage);
@@ -32,6 +37,12 @@ Layout::Layout(QWidget *parent) : QMainWindow(parent), ui(new Ui::Layout) {
 
     settingsPage = new Settings(this);
     ui->settingsPageLayout->addWidget(settingsPage);
+    connect(settingsPage, &Settings::accountDeleted, this, [this]() {
+        ui->sidebarAuthButton->setText("  Sign In / Sign Up");
+        refreshUserBadge();
+        homePage->refresh();
+        on_sidebarHomeButton_clicked();
+    });
 
     if (UserSession::instance().isLoggedIn()) {
         ui->sidebarAuthButton->setText("  Profile");
@@ -67,6 +78,7 @@ void Layout::setNavActive(NavCurrentButtonIndex index) {
     ui->sidebarHomeButton->setChecked(index == NavCurrentButtonIndex::Home);
     ui->sidebarMoviesButton->setChecked(index == NavCurrentButtonIndex::Movies);
     ui->sidebarRecommendationsButton->setChecked(index == NavCurrentButtonIndex::Recommendations);
+    ui->sidebarFavoritesButton->setChecked(index == NavCurrentButtonIndex::Favorites);
     ui->sidebarAuthButton->setChecked(index == NavCurrentButtonIndex::Profile);
     ui->sidebarSettingsButton->setChecked(index == NavCurrentButtonIndex::Settings);
 }
@@ -95,6 +107,12 @@ void Layout::on_sidebarRecommendationsButton_clicked() {
     setNavActive(NavCurrentButtonIndex::Recommendations);
     recommendationsPage->refresh();
     ui->stackedWidget->setCurrentWidget(ui->recommendationsStackPage);
+}
+
+void Layout::on_sidebarFavoritesButton_clicked() {
+    setNavActive(NavCurrentButtonIndex::Favorites);
+    favoritesPage->refresh();
+    ui->stackedWidget->setCurrentWidget(ui->favoritesStackPage);
 }
 
 void Layout::on_sidebarAuthButton_clicked() {

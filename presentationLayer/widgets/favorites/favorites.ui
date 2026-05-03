@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Favorites</class>
+ <widget class="QWidget" name="Favorites">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>700</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Favorites</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#Favorites {
+    background-color: #0F0F11;
+}
+#favoritesTitleLabel {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 600;
+}
+#favoritesEmptyLabel {
+    color: #6C6C6E;
+    font-size: 14px;
+}
+QScrollArea {
+    border: none;
+    background-color: transparent;
+}
+QScrollArea > QWidget#qt_scrollarea_viewport {
+    background-color: transparent;
+}
+#favoritesScrollContent,
+#favoritesStack,
+#favoritesGridPage,
+#favoritesEmptyPage {
+    background-color: transparent;
+}
+QFrame#movieCard {
+    background-color: #181818;
+    border-radius: 8px;
+    border: 1px solid #181818;
+}
+QFrame#movieCard:hover {
+    background-color: #232325;
+    border: 1px solid #2A2A2C;
+}
+QLabel#movieCardTitle {
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+}
+QLabel#movieCardGenres {
+    color: #6C6C6E;
+    font-size: 11px;
+}
+QLabel#movieCardRating {
+    color: #FFFFFF;
+    font-size: 12px;
+}
+QLabel#movieCardReviews {
+    color: #6C6C6E;
+    font-size: 12px;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="favoritesRootLayout">
+   <property name="spacing">
+    <number>16</number>
+   </property>
+   <property name="leftMargin">
+    <number>24</number>
+   </property>
+   <property name="topMargin">
+    <number>16</number>
+   </property>
+   <property name="rightMargin">
+    <number>24</number>
+   </property>
+   <property name="bottomMargin">
+    <number>24</number>
+   </property>
+   <item>
+    <widget class="QLabel" name="favoritesTitleLabel">
+     <property name="text">
+      <string>Favorites</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="favoritesStack">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="favoritesGridPage">
+      <layout class="QVBoxLayout" name="favoritesGridPageLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QScrollArea" name="favoritesScrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <widget class="QWidget" name="favoritesScrollContent">
+          <layout class="QGridLayout" name="favoritesGrid">
+           <property name="horizontalSpacing">
+            <number>24</number>
+           </property>
+           <property name="verticalSpacing">
+            <number>32</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="favoritesEmptyPage">
+      <layout class="QVBoxLayout" name="favoritesEmptyLayout">
+       <item>
+        <spacer name="emptyTopSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="favoritesEmptyLabel">
+         <property name="text">
+          <string>No favorites yet. Open a movie and tap the star to add it here.</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="emptyBottomSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

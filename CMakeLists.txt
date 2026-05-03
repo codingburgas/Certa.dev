@@ -50,6 +50,10 @@ set(PROJECT_SOURCES
     presentationLayer/widgets/recommendations/recommendations.h
     presentationLayer/widgets/recommendations/recommendations.ui
 
+    presentationLayer/widgets/favorites/favorites.cpp
+    presentationLayer/widgets/favorites/favorites.h
+    presentationLayer/widgets/favorites/favorites.ui
+
     presentationLayer/widgets/settings/settings.cpp
     presentationLayer/widgets/settings/settings.h
     presentationLayer/widgets/settings/settings.ui
@@ -121,6 +125,7 @@ target_include_directories(Certa.dev PRIVATE
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/movies/movie
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/common/movieCard
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/recommendations
+    ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/favorites
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/settings
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/profile
 

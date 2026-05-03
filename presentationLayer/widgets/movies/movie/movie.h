@@ -25,10 +25,14 @@ signals:
 
     void reviewSubmitted();
 
+    void favoriteToggled();
+
 private slots:
     void on_movieBackButton_clicked();
 
     void on_submitReviewButton_clicked();
+
+    void on_movieFavoriteButton_clicked();
 
 private:
     const int POSTER_WIDTH = 220;
@@ -47,4 +51,8 @@ private:
     void refreshAuthState();
 
     void setReviewStatus(const QString &text, const QString &state);
+
+    void refreshFavoriteState();
+
+    void updateFavoriteButton(bool isFavorite);
 };

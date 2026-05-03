@@ -4,7 +4,6 @@
 #include <QMessageBox>
 #include <QVector>
 
-#include "auth.h"
 #include "authService.h"
 #include "movieService.h"
 #include "ui_settings.h"
@@ -240,7 +239,5 @@ void Settings::on_deleteAccountButton_clicked() {
 
     AuthService::logout();
 
-    this->hide();
-    auto authPage = new Auth();
-    authPage->show();
+    emit accountDeleted();
 }

@@ -102,6 +102,7 @@
   #sidebarHomeButton,
   #sidebarMoviesButton,
   #sidebarRecommendationsButton,
+  #sidebarFavoritesButton,
   #sidebarAuthButton,
   #sidebarSettingsButton {
     min-height: 48px;
@@ -121,6 +122,7 @@
   #sidebarHomeButton:checked,
   #sidebarMoviesButton:checked,
   #sidebarRecommendationsButton:checked,
+  #sidebarFavoritesButton:checked,
   #sidebarAuthButton:checked,
   #sidebarSettingsButton:checked {
     background-color: rgba(174, 26, 25, 92);
@@ -131,6 +133,7 @@
   #sidebarHomeButton:hover, #sidebarHomeButton:focus,
   #sidebarMoviesButton:hover, #sidebarMoviesButton:focus,
   #sidebarRecommendationsButton:hover, #sidebarRecommendationsButton:focus,
+  #sidebarFavoritesButton:hover, #sidebarFavoritesButton:focus,
   #sidebarAuthButton:hover, #sidebarAuthButton:focus,
   #sidebarSettingsButton:hover, #sidebarSettingsButton:focus {
     background-color: rgba(149, 22, 21, 45);
@@ -141,6 +144,7 @@
   #sidebarHomeButton:checked:hover, #sidebarHomeButton:checked:focus,
   #sidebarMoviesButton:checked:hover, #sidebarMoviesButton:checked:focus,
   #sidebarRecommendationsButton:checked:hover, #sidebarRecommendationsButton:checked:focus,
+  #sidebarFavoritesButton:checked:hover, #sidebarFavoritesButton:checked:focus,
   #sidebarAuthButton:checked:hover, #sidebarAuthButton:checked:focus,
   #sidebarSettingsButton:checked:hover, #sidebarSettingsButton:checked:focus {
     background-color: rgba(174, 26, 25, 120);
@@ -303,11 +307,37 @@
         <bool>true</bool>
        </property>
       </widget>
+      <widget class="QPushButton" name="sidebarFavoritesButton">
+       <property name="geometry">
+        <rect>
+         <x>8</x>
+         <y>280</y>
+         <width>234</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>  Favorites</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../assets/resources.qrc">
+         <normaloff>:/icons/star.svg</normaloff>:/icons/star.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+      </widget>
       <widget class="QFrame" name="sidebarDivider">
        <property name="geometry">
         <rect>
          <x>16</x>
-         <y>278</y>
+         <y>338</y>
          <width>218</width>
          <height>1</height>
         </rect>
@@ -323,7 +353,7 @@
        <property name="geometry">
         <rect>
          <x>8</x>
-         <y>288</y>
+         <y>348</y>
          <width>234</width>
          <height>50</height>
         </rect>
@@ -493,6 +523,22 @@
         </widget>
         <widget class="QWidget" name="recommendationsStackPage">
          <layout class="QVBoxLayout" name="recommendationsPageLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="favoritesStackPage">
+         <layout class="QVBoxLayout" name="favoritesPageLayout">
           <property name="leftMargin">
            <number>0</number>
           </property>

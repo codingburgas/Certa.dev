@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QMainWindow>
+#include "favorites.h"
 #include "home.h"
 #include "movies.h"
 #include "profile.h"
@@ -31,6 +32,8 @@ private slots:
 
     void on_sidebarRecommendationsButton_clicked();
 
+    void on_sidebarFavoritesButton_clicked();
+
     void on_sidebarAuthButton_clicked();
 
     void on_sidebarSettingsButton_clicked();
@@ -40,6 +43,7 @@ private:
         Home,
         Movies,
         Recommendations,
+        Favorites,
         Profile,
         Settings
     };
@@ -54,6 +58,7 @@ private:
     Home *homePage;
     Movies *moviesPage;
     Recommendations *recommendationsPage;
+    Favorites *favoritesPage;
     Profile *profilePage;
     Settings *settingsPage;
 };

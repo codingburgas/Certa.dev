@@ -2,6 +2,8 @@
 #include <QDebug>
 #include <QDir>
 #include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
 
 Database &Database::instance() {
     static Database instance;
@@ -27,6 +29,12 @@ bool Database::connect(const QString &dbFileName) {
     _connected = dbInfo.exists() && _db.open() && _db.isOpen();
 
     if (_connected) {
+        QSqlQuery pragma(_db);
+        if (!pragma.exec("PRAGMA foreign_keys = ON")) {
+            qDebug() << "Failed to enable foreign keys:" << pragma.lastError().text();
+            _connected = false;
+            return _connected;
+        }
         qDebug() << "Using db at:" << databasePath;
     } else {
         qDebug() << "Could not open db at:" << databasePath;

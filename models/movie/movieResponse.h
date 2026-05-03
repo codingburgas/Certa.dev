@@ -30,3 +30,14 @@ struct GetReviewsResponse {
     QString errorMessage;
     QVector<Review> reviews;
 };
+
+struct FavoriteResponse {
+    bool success;
+    QString errorMessage;
+};
+
+struct FavoriteStatusResponse {
+    bool success;
+    QString errorMessage;
+    bool isFavorite;
+};

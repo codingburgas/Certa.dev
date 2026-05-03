@@ -17,6 +17,9 @@ public:
 
     ~Settings() override;
 
+signals:
+    void accountDeleted();
+
 private slots:
     void on_saveUsernameButton_clicked();
 

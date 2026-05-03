@@ -210,4 +210,104 @@ namespace MovieRepository {
 
         return {.success = true, .errorMessage = "", .reviews = reviews};
     }
+
+    FavoriteStatusResponse isFavorite(const QString &username, int movieId) {
+        QSqlQuery query;
+        query.prepare(
+            "SELECT 1 FROM user_favorites uf "
+            "JOIN users u ON u.id = uf.user_id "
+            "WHERE u.username = ? AND uf.movie_id = ?"
+        );
+        query.addBindValue(username);
+        query.addBindValue(movieId);
+
+        if (!query.exec()) {
+            return {.success = false, .errorMessage = "Failed to check favorite.", .isFavorite = false};
+        }
+
+        return {.success = true, .errorMessage = "", .isFavorite = query.next()};
+    }
+
+    FavoriteResponse addFavorite(const QString &username, int movieId) {
+        QSqlQuery getUserId;
+        getUserId.prepare("SELECT id FROM users WHERE username = ?");
+        getUserId.addBindValue(username);
+        if (!getUserId.exec() || !getUserId.next()) {
+            return {.success = false, .errorMessage = "User not found."};
+        }
+        int userId = getUserId.value(0).toInt();
+
+        QSqlQuery insert;
+        insert.prepare("INSERT OR IGNORE INTO user_favorites (user_id, movie_id) VALUES (?, ?)");
+        insert.addBindValue(userId);
+        insert.addBindValue(movieId);
+
+        if (!insert.exec()) {
+            return {.success = false, .errorMessage = "Failed to add favorite."};
+        }
+
+        return {.success = true, .errorMessage = ""};
+    }
+
+    FavoriteResponse removeFavorite(const QString &username, int movieId) {
+        QSqlQuery getUserId;
+        getUserId.prepare("SELECT id FROM users WHERE username = ?");
+        getUserId.addBindValue(username);
+        if (!getUserId.exec() || !getUserId.next()) {
+            return {.success = false, .errorMessage = "User not found."};
+        }
+        int userId = getUserId.value(0).toInt();
+
+        QSqlQuery del;
+        del.prepare("DELETE FROM user_favorites WHERE user_id = ? AND movie_id = ?");
+        del.addBindValue(userId);
+        del.addBindValue(movieId);
+
+        if (!del.exec()) {
+            return {.success = false, .errorMessage = "Failed to remove favorite."};
+        }
+
+        return {.success = true, .errorMessage = ""};
+    }
+
+    GetMoviesResponse getFavoriteMovies(const QString &username) {
+        QSqlQuery query;
+        query.prepare(
+            "SELECT m.id, m.title, m.description, m.year, m.director, "
+            "COALESCE(AVG(r.rating), 0) AS avg_rating, m.poster_path, "
+            "COUNT(r.id) AS review_count, "
+            "(SELECT GROUP_CONCAT(g.name, ', ') "
+            " FROM movie_genres mg JOIN genres g ON g.id = mg.genre_id "
+            " WHERE mg.movie_id = m.id) AS genres "
+            "FROM movies m "
+            "JOIN user_favorites uf ON uf.movie_id = m.id "
+            "JOIN users u ON u.id = uf.user_id "
+            "LEFT JOIN reviews r ON r.movie_id = m.id "
+            "WHERE u.username = ? "
+            "GROUP BY m.id "
+            "ORDER BY m.title"
+        );
+        query.addBindValue(username);
+
+        if (!query.exec()) {
+            return {.success = false, .errorMessage = "Failed to fetch favorite movies.", .movies = {}};
+        }
+
+        QVector<MovieDto> movies;
+        while (query.next()) {
+            MovieDto movie;
+            movie.id = query.value(0).toInt();
+            movie.title = query.value(1).toString();
+            movie.description = query.value(2).toString();
+            movie.year = query.value(3).toInt();
+            movie.director = query.value(4).toString();
+            movie.rating = query.value(5).toDouble();
+            movie.posterPath = query.value(6).toString();
+            movie.reviewCount = query.value(7).toInt();
+            movie.genres = query.value(8).toString();
+            movies.append(movie);
+        }
+
+        return {.success = true, .errorMessage = "", .movies = movies};
+    }
 }

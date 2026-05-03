@@ -9,6 +9,7 @@ Home::Home(QWidget *parent) : QWidget(parent), ui(new Ui::Home) {
 
     for (int col = 0; col < COLUMNS; col++) {
         ui->recommendationsGrid->setColumnStretch(col, 1);
+        ui->favoritesGrid->setColumnStretch(col, 1);
     }
 
     refresh();
@@ -26,9 +27,10 @@ void Home::refresh() {
 
     ui->homeStackedWidget->setCurrentWidget(ui->signedInPage);
     loadRecommendations();
+    loadFavorites();
 }
 
-void Home::clearGrid() {
+void Home::clearRecommendationsGrid() {
     QLayoutItem *item;
     while ((item = ui->recommendationsGrid->takeAt(0)) != nullptr) {
         if (QWidget *widget = item->widget()) {
@@ -38,8 +40,18 @@ void Home::clearGrid() {
     }
 }
 
+void Home::clearFavoritesGrid() {
+    QLayoutItem *item;
+    while ((item = ui->favoritesGrid->takeAt(0)) != nullptr) {
+        if (QWidget *widget = item->widget()) {
+            widget->deleteLater();
+        }
+        delete item;
+    }
+}
+
 void Home::loadRecommendations() {
-    clearGrid();
+    clearRecommendationsGrid();
 
     const auto currentUser = UserSession::instance().getCurrentUser();
     if (!currentUser) {
@@ -68,10 +80,45 @@ void Home::loadRecommendations() {
     }
 }
 
+void Home::loadFavorites() {
+    clearFavoritesGrid();
+
+    const auto currentUser = UserSession::instance().getCurrentUser();
+    if (!currentUser) {
+        return;
+    }
+
+    GetMoviesResponse response = MovieService::getFavoriteMovies(currentUser->username);
+    if (!response.success) {
+        qDebug() << "Failed to load favorites:" << response.errorMessage;
+        ui->favoritesStack->setCurrentWidget(ui->favoritesEmptyPage);
+        return;
+    }
+
+    if (response.movies.isEmpty()) {
+        ui->favoritesStack->setCurrentWidget(ui->favoritesEmptyPage);
+        return;
+    }
+
+    ui->favoritesStack->setCurrentWidget(ui->favoritesGridPage);
+
+    const QVector<MovieDto> movies = response.movies;
+    const int count = std::min(static_cast<int>(movies.size()), PREVIEW_LIMIT);
+    for (int i = 0; i < count; i++) {
+        MovieCard *card = new MovieCard(movies[i], this);
+        connect(card, &MovieCard::clicked, this, &Home::movieClicked);
+        ui->favoritesGrid->addWidget(card, 0, i);
+    }
+}
+
 void Home::on_guestSignInButton_clicked() {
     emit signInRequested();
 }
 
 void Home::on_exploreMoreButton_clicked() {
     emit exploreRecommendationsRequested();
+}
+
+void Home::on_openFavoritesButton_clicked() {
+    emit openFavoritesRequested();
 }
