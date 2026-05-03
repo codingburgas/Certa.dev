@@ -8,7 +8,7 @@
 Auth::Auth(QWidget *parent) : QWidget(parent), ui(new Ui::Auth) {
     ui->setupUi(this);
 
-    ui->authStackedWidget->setCurrentIndex(SignIn);
+    ui->authStackedWidget->setCurrentWidget(ui->page_signin);
 
 
     connect(ui->signin_usernameLineEdit, &QLineEdit::returnPressed, this, [this]() {
@@ -101,11 +101,11 @@ void Auth::on_signup_signUpButton_clicked() {
 }
 
 void Auth::on_signin_switchButton_clicked() {
-    ui->authStackedWidget->setCurrentIndex(SignUp);
+    ui->authStackedWidget->setCurrentWidget(ui->page_signup);
 }
 
 void Auth::on_signup_switchButton_clicked() {
-    ui->authStackedWidget->setCurrentIndex(SignIn);
+    ui->authStackedWidget->setCurrentWidget(ui->page_signin);
 }
 
 void Auth::on_signin_backButton_clicked() {

@@ -59,6 +59,57 @@ namespace MovieRepository {
         return {.success = true, .errorMessage = "", .movies = movies};
     }
 
+    GetMoviesResponse getRecommendedMovies(const QString &username, int limit) {
+        QString sql =
+            "SELECT m.id, m.title, m.description, m.year, m.director, "
+            "COALESCE(AVG(r.rating), 0) AS avg_rating, m.poster_path, "
+            "COUNT(r.id) AS review_count, "
+            "(SELECT GROUP_CONCAT(g.name, ', ') "
+            " FROM movie_genres mg JOIN genres g ON g.id = mg.genre_id "
+            " WHERE mg.movie_id = m.id) AS genres, "
+            "COUNT(DISTINCT mg2.genre_id) AS match_count "
+            "FROM movies m "
+            "JOIN movie_genres mg2 ON mg2.movie_id = m.id "
+            "JOIN user_interests ui ON ui.genre_id = mg2.genre_id "
+            "JOIN users u ON u.id = ui.user_id "
+            "LEFT JOIN reviews r ON r.movie_id = m.id "
+            "WHERE u.username = ? "
+            "GROUP BY m.id "
+            "ORDER BY match_count DESC, avg_rating DESC, m.title";
+
+        if (limit > 0) {
+            sql += " LIMIT ?";
+        }
+
+        QSqlQuery query;
+        query.prepare(sql);
+        query.addBindValue(username);
+        if (limit > 0) {
+            query.addBindValue(limit);
+        }
+
+        if (!query.exec()) {
+            return {.success = false, .errorMessage = "Failed to fetch recommended movies.", .movies = {}};
+        }
+
+        QVector<MovieDto> movies;
+        while (query.next()) {
+            MovieDto movie;
+            movie.id = query.value(0).toInt();
+            movie.title = query.value(1).toString();
+            movie.description = query.value(2).toString();
+            movie.year = query.value(3).toInt();
+            movie.director = query.value(4).toString();
+            movie.rating = query.value(5).toDouble();
+            movie.posterPath = query.value(6).toString();
+            movie.reviewCount = query.value(7).toInt();
+            movie.genres = query.value(8).toString();
+            movies.append(movie);
+        }
+
+        return {.success = true, .errorMessage = "", .movies = movies};
+    }
+
     GetMovieResponse getMovieById(int id) {
         QSqlQuery query;
         query.prepare(

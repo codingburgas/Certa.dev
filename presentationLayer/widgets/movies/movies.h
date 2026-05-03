@@ -2,7 +2,6 @@
 
 #include <QWidget>
 #include "movie.h"
-#include "movieDto.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,13 +20,10 @@ public:
 
     void showList();
 
-protected:
-    bool eventFilter(QObject *watched, QEvent *event) override;
+    void openMoviePage(int movieId);
 
 private:
     const int COLUMNS = 3;
-    const int POSTER_HEIGHT = 260;
-    const int ICON_SIZE = 14;
 
     Ui::Movies *ui;
     Movie *moviePage;
@@ -35,8 +31,4 @@ private:
     void loadMovies();
 
     void reloadMovies();
-
-    QWidget *createMovieCard(const MovieDto &movie);
-
-    void openMoviePage(int movieId);
 };

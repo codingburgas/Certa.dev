@@ -17,33 +17,370 @@
    <string notr="true">#Home {
     background-color: #0F0F11;
 }
-#homeTitleLabel {
+#homeStackedWidget,
+#guestPage,
+#signedInPage {
+    background-color: transparent;
+}
+#guestTitleLabel {
     color: #FFFFFF;
-    font-size: 20px;
+    font-size: 36px;
+    font-weight: 700;
+}
+#guestSubtitleLabel {
+    color: #6C6C6E;
+    font-size: 14px;
+}
+#guestSignInButton {
+    background-color: #AE1A19;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    font-size: 12px;
     font-weight: 600;
+    padding: 6px 16px;
+    min-width: 140px;
+    min-height: 32px;
+}
+#guestSignInButton:hover {
+    background-color: #951615;
+}
+#recommendationsTitleLabel {
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: 700;
+}
+#recommendationsTitleAccent {
+    background-color: #AE1A19;
+    border-radius: 2px;
+    min-width: 4px;
+    max-width: 4px;
+    min-height: 24px;
+    max-height: 24px;
+}
+#noRecommendationsLabel {
+    color: #6C6C6E;
+    font-size: 14px;
+}
+#exploreMoreButton {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 1px solid #AE1A19;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 16px;
+    min-height: 26px;
+    max-height: 26px;
+}
+#exploreMoreButton:hover {
+    background-color: rgba(174, 26, 25, 92);
+}
+QFrame#movieCard {
+    background-color: #181818;
+    border-radius: 8px;
+    border: 1px solid #181818;
+}
+QFrame#movieCard:hover {
+    background-color: #232325;
+    border: 1px solid #2A2A2C;
+}
+QLabel#movieCardTitle {
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+}
+QLabel#movieCardGenres {
+    color: #6C6C6E;
+    font-size: 11px;
+}
+QLabel#movieCardRating {
+    color: #FFFFFF;
+    font-size: 12px;
+}
+QLabel#movieCardReviews {
+    color: #6C6C6E;
+    font-size: 12px;
 }</string>
   </property>
-  <layout class="QVBoxLayout" name="homeLayout">
+  <layout class="QVBoxLayout" name="homeRootLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
    <property name="leftMargin">
-    <number>24</number>
+    <number>0</number>
    </property>
    <property name="topMargin">
-    <number>24</number>
+    <number>0</number>
    </property>
    <property name="rightMargin">
-    <number>24</number>
+    <number>0</number>
    </property>
    <property name="bottomMargin">
-    <number>24</number>
+    <number>0</number>
    </property>
    <item>
-    <widget class="QLabel" name="homeTitleLabel">
-     <property name="text">
-      <string>This is the home page</string>
+    <widget class="QStackedWidget" name="homeStackedWidget">
+     <property name="currentIndex">
+      <number>0</number>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
+     <widget class="QWidget" name="guestPage">
+      <layout class="QVBoxLayout" name="guestLayout">
+       <property name="spacing">
+        <number>16</number>
+       </property>
+       <property name="leftMargin">
+        <number>24</number>
+       </property>
+       <property name="topMargin">
+        <number>24</number>
+       </property>
+       <property name="rightMargin">
+        <number>24</number>
+       </property>
+       <property name="bottomMargin">
+        <number>24</number>
+       </property>
+       <item>
+        <spacer name="guestTopSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="guestTitleLabel">
+         <property name="text">
+          <string>Welcome to Certa.dev</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="guestSubtitleLabel">
+         <property name="text">
+          <string>Sign in to unlock a personalized movie experience suited to your taste.</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="guestButtonRow">
+         <item>
+          <spacer name="guestButtonLeftSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="guestSignInButton">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Sign In / Sign Up</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="guestButtonRightSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="guestBottomSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="signedInPage">
+      <layout class="QVBoxLayout" name="signedInLayout">
+       <property name="spacing">
+        <number>16</number>
+       </property>
+       <property name="leftMargin">
+        <number>24</number>
+       </property>
+       <property name="topMargin">
+        <number>16</number>
+       </property>
+       <property name="rightMargin">
+        <number>24</number>
+       </property>
+       <property name="bottomMargin">
+        <number>24</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="recommendationsTitleRow">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QFrame" name="recommendationsTitleAccent">
+           <property name="frameShape">
+            <enum>QFrame::Shape::NoFrame</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="recommendationsTitleLabel">
+           <property name="text">
+            <string>You might like</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="recommendationsTitleSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QStackedWidget" name="recommendationsStack">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="recommendationsGridPage">
+          <layout class="QVBoxLayout" name="recommendationsGridPageLayout">
+           <property name="spacing">
+            <number>16</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>8</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <layout class="QGridLayout" name="recommendationsGrid">
+             <property name="horizontalSpacing">
+              <number>24</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>32</number>
+             </property>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="exploreRow">
+             <item>
+              <spacer name="exploreLeftSpacer">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="exploreMoreButton">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>Explore more</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="exploreRightSpacer">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="recommendationsBottomSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="recommendationsEmptyPage">
+          <layout class="QVBoxLayout" name="recommendationsEmptyLayout">
+           <item>
+            <spacer name="emptyTopSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="noRecommendationsLabel">
+             <property name="text">
+              <string>No recommendations yet. Pick some favorite genres in Settings to see movies tailored for you.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="emptyBottomSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
   </layout>

@@ -4,6 +4,7 @@
 #include "home.h"
 #include "movies.h"
 #include "profile.h"
+#include "recommendations.h"
 #include "settings.h"
 
 QT_BEGIN_NAMESPACE
@@ -28,6 +29,8 @@ private slots:
 
     void on_sidebarMoviesButton_clicked();
 
+    void on_sidebarRecommendationsButton_clicked();
+
     void on_sidebarAuthButton_clicked();
 
     void on_sidebarSettingsButton_clicked();
@@ -36,6 +39,7 @@ private:
     enum class NavCurrentButtonIndex {
         Home,
         Movies,
+        Recommendations,
         Profile,
         Settings
     };
@@ -44,9 +48,12 @@ private:
 
     void refreshUserBadge();
 
+    void openMovieFromOtherPage(int movieId);
+
     Ui::Layout *ui;
     Home *homePage;
     Movies *moviesPage;
+    Recommendations *recommendationsPage;
     Profile *profilePage;
     Settings *settingsPage;
 };

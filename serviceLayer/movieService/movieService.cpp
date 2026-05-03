@@ -10,6 +10,10 @@ namespace MovieService {
         return MovieRepository::getAllMovies();
     }
 
+    GetMoviesResponse getRecommendedMovies(const QString &username, int limit) {
+        return MovieRepository::getRecommendedMovies(username, limit);
+    }
+
     GetMovieResponse getMovieById(int id) {
         return MovieRepository::getMovieById(id);
     }

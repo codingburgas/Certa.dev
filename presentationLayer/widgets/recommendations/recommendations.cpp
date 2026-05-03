@@ -1,34 +1,22 @@
-#include "home.h"
+#include "recommendations.h"
 #include "movieCard.h"
 #include "movieService.h"
-#include "ui_home.h"
+#include "ui_recommendations.h"
 #include "userSession.h"
 
-Home::Home(QWidget *parent) : QWidget(parent), ui(new Ui::Home) {
+Recommendations::Recommendations(QWidget *parent) : QWidget(parent), ui(new Ui::Recommendations) {
     ui->setupUi(this);
 
     for (int col = 0; col < COLUMNS; col++) {
         ui->recommendationsGrid->setColumnStretch(col, 1);
     }
-
-    refresh();
 }
 
-Home::~Home() {
+Recommendations::~Recommendations() {
     delete ui;
 }
 
-void Home::refresh() {
-    if (!UserSession::instance().isLoggedIn()) {
-        ui->homeStackedWidget->setCurrentWidget(ui->guestPage);
-        return;
-    }
-
-    ui->homeStackedWidget->setCurrentWidget(ui->signedInPage);
-    loadRecommendations();
-}
-
-void Home::clearGrid() {
+void Recommendations::clearGrid() {
     QLayoutItem *item;
     while ((item = ui->recommendationsGrid->takeAt(0)) != nullptr) {
         if (QWidget *widget = item->widget()) {
@@ -38,15 +26,16 @@ void Home::clearGrid() {
     }
 }
 
-void Home::loadRecommendations() {
+void Recommendations::refresh() {
     clearGrid();
 
     const auto currentUser = UserSession::instance().getCurrentUser();
     if (!currentUser) {
+        ui->recommendationsStack->setCurrentWidget(ui->recommendationsEmptyPage);
         return;
     }
 
-    GetMoviesResponse response = MovieService::getRecommendedMovies(currentUser->username, PREVIEW_LIMIT);
+    GetMoviesResponse response = MovieService::getRecommendedMovies(currentUser->username);
     if (!response.success) {
         qDebug() << "Failed to load recommendations:" << response.errorMessage;
         ui->recommendationsStack->setCurrentWidget(ui->recommendationsEmptyPage);
@@ -62,16 +51,13 @@ void Home::loadRecommendations() {
 
     const QVector<MovieDto> movies = response.movies;
     for (int i = 0; i < movies.size(); i++) {
+        int row = i / COLUMNS;
+        int col = i % COLUMNS;
         MovieCard *card = new MovieCard(movies[i], this);
-        connect(card, &MovieCard::clicked, this, &Home::movieClicked);
-        ui->recommendationsGrid->addWidget(card, 0, i);
+        connect(card, &MovieCard::clicked, this, &Recommendations::movieClicked);
+        ui->recommendationsGrid->addWidget(card, row, col);
     }
-}
 
-void Home::on_guestSignInButton_clicked() {
-    emit signInRequested();
-}
-
-void Home::on_exploreMoreButton_clicked() {
-    emit exploreRecommendationsRequested();
+    int lastRow = (movies.size() - 1) / COLUMNS + 1;
+    ui->recommendationsGrid->setRowStretch(lastRow, 1);
 }

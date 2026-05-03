@@ -17,6 +17,27 @@ public:
 
     ~Home() override;
 
+    void refresh();
+
+signals:
+    void signInRequested();
+
+    void exploreRecommendationsRequested();
+
+    void movieClicked(int movieId);
+
+private slots:
+    void on_guestSignInButton_clicked();
+
+    void on_exploreMoreButton_clicked();
+
 private:
+    const int PREVIEW_LIMIT = 3;
+    const int COLUMNS = 3;
+
     Ui::Home *ui;
+
+    void clearGrid();
+
+    void loadRecommendations();
 };

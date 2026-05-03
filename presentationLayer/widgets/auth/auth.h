@@ -33,9 +33,4 @@ private:
     Ui::Auth *ui;
 
     void redirectToLayout();
-
-    enum AuthStackedWidgetIndex {
-        SignIn,
-        SignUp
-    };
 };

@@ -43,6 +43,13 @@ set(PROJECT_SOURCES
     presentationLayer/widgets/movies/movie/movie.h
     presentationLayer/widgets/movies/movie/movie.ui
 
+    presentationLayer/widgets/common/movieCard/movieCard.cpp
+    presentationLayer/widgets/common/movieCard/movieCard.h
+
+    presentationLayer/widgets/recommendations/recommendations.cpp
+    presentationLayer/widgets/recommendations/recommendations.h
+    presentationLayer/widgets/recommendations/recommendations.ui
+
     presentationLayer/widgets/settings/settings.cpp
     presentationLayer/widgets/settings/settings.h
     presentationLayer/widgets/settings/settings.ui
@@ -112,6 +119,8 @@ target_include_directories(Certa.dev PRIVATE
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/auth/interestsDialog
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/movies
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/movies/movie
+    ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/common/movieCard
+    ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/recommendations
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/settings
     ${CMAKE_SOURCE_DIR}/presentationLayer/widgets/profile
 

@@ -9,9 +9,16 @@ Layout::Layout(QWidget *parent) : QMainWindow(parent), ui(new Ui::Layout) {
 
     homePage = new Home(this);
     ui->homePageLayout->addWidget(homePage);
+    connect(homePage, &Home::signInRequested, this, &Layout::on_sidebarAuthButton_clicked);
+    connect(homePage, &Home::exploreRecommendationsRequested, this, &Layout::on_sidebarRecommendationsButton_clicked);
+    connect(homePage, &Home::movieClicked, this, &Layout::openMovieFromOtherPage);
 
     moviesPage = new Movies(this);
     ui->moviesPageLayout->addWidget(moviesPage);
+
+    recommendationsPage = new Recommendations(this);
+    ui->recommendationsPageLayout->addWidget(recommendationsPage);
+    connect(recommendationsPage, &Recommendations::movieClicked, this, &Layout::openMovieFromOtherPage);
 
     profilePage = new Profile(this);
     ui->profilePageLayout->addWidget(profilePage);
@@ -19,6 +26,7 @@ Layout::Layout(QWidget *parent) : QMainWindow(parent), ui(new Ui::Layout) {
         UserSession::instance().clearUser();
         ui->sidebarAuthButton->setText("  Sign In / Sign Up");
         refreshUserBadge();
+        homePage->refresh();
         on_sidebarHomeButton_clicked();
     });
 
@@ -56,12 +64,20 @@ Layout::~Layout() {
 void Layout::setNavActive(NavCurrentButtonIndex index) {
     ui->sidebarHomeButton->setChecked(index == NavCurrentButtonIndex::Home);
     ui->sidebarMoviesButton->setChecked(index == NavCurrentButtonIndex::Movies);
+    ui->sidebarRecommendationsButton->setChecked(index == NavCurrentButtonIndex::Recommendations);
     ui->sidebarAuthButton->setChecked(index == NavCurrentButtonIndex::Profile);
     ui->sidebarSettingsButton->setChecked(index == NavCurrentButtonIndex::Settings);
 }
 
+void Layout::openMovieFromOtherPage(int movieId) {
+    setNavActive(NavCurrentButtonIndex::Movies);
+    moviesPage->openMoviePage(movieId);
+    ui->stackedWidget->setCurrentWidget(ui->moviesStackPage);
+}
+
 void Layout::on_sidebarHomeButton_clicked() {
     setNavActive(NavCurrentButtonIndex::Home);
+    homePage->refresh();
     ui->stackedWidget->setCurrentWidget(ui->homeStackPage);
 }
 
@@ -69,6 +85,12 @@ void Layout::on_sidebarMoviesButton_clicked() {
     setNavActive(NavCurrentButtonIndex::Movies);
     moviesPage->showList();
     ui->stackedWidget->setCurrentWidget(ui->moviesStackPage);
+}
+
+void Layout::on_sidebarRecommendationsButton_clicked() {
+    setNavActive(NavCurrentButtonIndex::Recommendations);
+    recommendationsPage->refresh();
+    ui->stackedWidget->setCurrentWidget(ui->recommendationsStackPage);
 }
 
 void Layout::on_sidebarAuthButton_clicked() {

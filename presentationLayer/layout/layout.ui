@@ -27,7 +27,12 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">#centralwidget {
+    <string notr="true">
+  *:focus {
+     outline: none;
+  }
+
+  #centralwidget {
     background-color: #0F0F11;
   }
 
@@ -96,6 +101,7 @@
 
   #sidebarHomeButton,
   #sidebarMoviesButton,
+  #sidebarRecommendationsButton,
   #sidebarAuthButton,
   #sidebarSettingsButton {
     min-height: 48px;
@@ -114,6 +120,7 @@
 
   #sidebarHomeButton:checked,
   #sidebarMoviesButton:checked,
+  #sidebarRecommendationsButton:checked,
   #sidebarAuthButton:checked,
   #sidebarSettingsButton:checked {
     background-color: rgba(174, 26, 25, 92);
@@ -121,19 +128,21 @@
     color: #FFFFFF;
   }
 
-  #sidebarHomeButton:hover,
-  #sidebarMoviesButton:hover,
-  #sidebarAuthButton:hover,
-  #sidebarSettingsButton:hover {
+  #sidebarHomeButton:hover, #sidebarHomeButton:focus,
+  #sidebarMoviesButton:hover, #sidebarMoviesButton:focus,
+  #sidebarRecommendationsButton:hover, #sidebarRecommendationsButton:focus,
+  #sidebarAuthButton:hover, #sidebarAuthButton:focus,
+  #sidebarSettingsButton:hover, #sidebarSettingsButton:focus {
     background-color: rgba(149, 22, 21, 45);
     border-color: #181818;
     color: #FFFFFF;
   }
 
-  #sidebarHomeButton:checked:hover,
-  #sidebarMoviesButton:checked:hover,
-  #sidebarAuthButton:checked:hover,
-  #sidebarSettingsButton:checked:hover {
+  #sidebarHomeButton:checked:hover, #sidebarHomeButton:checked:focus,
+  #sidebarMoviesButton:checked:hover, #sidebarMoviesButton:checked:focus,
+  #sidebarRecommendationsButton:checked:hover, #sidebarRecommendationsButton:checked:focus,
+  #sidebarAuthButton:checked:hover, #sidebarAuthButton:checked:focus,
+  #sidebarSettingsButton:checked:hover, #sidebarSettingsButton:checked:focus {
     background-color: rgba(174, 26, 25, 120);
     border-color: transparent;
     color: #FFFFFF;
@@ -268,11 +277,37 @@
         <bool>true</bool>
        </property>
       </widget>
+      <widget class="QPushButton" name="sidebarRecommendationsButton">
+       <property name="geometry">
+        <rect>
+         <x>8</x>
+         <y>220</y>
+         <width>234</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>  Recommendations</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../assets/resources.qrc">
+         <normaloff>:/icons/sparkles.svg</normaloff>:/icons/sparkles.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+      </widget>
       <widget class="QFrame" name="sidebarDivider">
        <property name="geometry">
         <rect>
          <x>16</x>
-         <y>218</y>
+         <y>278</y>
          <width>218</width>
          <height>1</height>
         </rect>
@@ -288,7 +323,7 @@
        <property name="geometry">
         <rect>
          <x>8</x>
-         <y>228</y>
+         <y>288</y>
          <width>234</width>
          <height>50</height>
         </rect>
@@ -442,6 +477,22 @@
         </widget>
         <widget class="QWidget" name="moviesStackPage">
          <layout class="QVBoxLayout" name="moviesPageLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="recommendationsStackPage">
+         <layout class="QVBoxLayout" name="recommendationsPageLayout">
           <property name="leftMargin">
            <number>0</number>
           </property>

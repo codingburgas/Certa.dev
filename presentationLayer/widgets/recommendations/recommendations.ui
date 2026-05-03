@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Movies</class>
- <widget class="QWidget" name="Movies">
+ <class>Recommendations</class>
+ <widget class="QWidget" name="Recommendations">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,20 +11,20 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Movies</string>
+   <string>Recommendations</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#Movies {
+   <string notr="true">#Recommendations {
     background-color: #0F0F11;
 }
-#moviesTitleLabel {
+#recommendationsTitleLabel {
     color: #FFFFFF;
     font-size: 20px;
     font-weight: 600;
 }
-QLabel#moviesTitleLabel {
-    padding-top: 0px;
-    padding-bottom: 0px;
+#recommendationsEmptyLabel {
+    color: #6C6C6E;
+    font-size: 14px;
 }
 QScrollArea {
     border: none;
@@ -33,12 +33,10 @@ QScrollArea {
 QScrollArea > QWidget#qt_scrollarea_viewport {
     background-color: transparent;
 }
-#scrollContent {
-    background-color: transparent;
-}
-#moviesStackedWidget,
-#moviesListPage,
-#moviePageHost {
+#recommendationsScrollContent,
+#recommendationsStack,
+#recommendationsGridPage,
+#recommendationsEmptyPage {
     background-color: transparent;
 }
 QFrame#movieCard {
@@ -68,61 +66,61 @@ QLabel#movieCardReviews {
     font-size: 12px;
 }</string>
   </property>
-  <layout class="QVBoxLayout" name="moviesRootLayout">
+  <layout class="QVBoxLayout" name="recommendationsRootLayout">
    <property name="spacing">
-    <number>0</number>
+    <number>16</number>
    </property>
    <property name="leftMargin">
-    <number>0</number>
+    <number>24</number>
    </property>
    <property name="topMargin">
-    <number>0</number>
+    <number>16</number>
    </property>
    <property name="rightMargin">
-    <number>0</number>
+    <number>24</number>
    </property>
    <property name="bottomMargin">
-    <number>0</number>
+    <number>24</number>
    </property>
    <item>
-    <widget class="QStackedWidget" name="moviesStackedWidget">
+    <widget class="QLabel" name="recommendationsTitleLabel">
+     <property name="text">
+      <string>Recommendations</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="recommendationsStack">
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="moviesListPage">
-      <layout class="QVBoxLayout" name="moviesLayout">
+     <widget class="QWidget" name="recommendationsGridPage">
+      <layout class="QVBoxLayout" name="recommendationsGridPageLayout">
        <property name="spacing">
-        <number>16</number>
+        <number>0</number>
        </property>
        <property name="leftMargin">
-        <number>24</number>
+        <number>0</number>
        </property>
        <property name="topMargin">
-        <number>16</number>
+        <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>24</number>
+        <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>24</number>
+        <number>0</number>
        </property>
        <item>
-        <widget class="QLabel" name="moviesTitleLabel">
-         <property name="text">
-          <string>Movies</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QScrollArea" name="moviesScrollArea">
+        <widget class="QScrollArea" name="recommendationsScrollArea">
          <property name="widgetResizable">
           <bool>true</bool>
          </property>
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>
          </property>
-         <widget class="QWidget" name="scrollContent">
-          <layout class="QGridLayout" name="moviesGrid">
+         <widget class="QWidget" name="recommendationsScrollContent">
+          <layout class="QGridLayout" name="recommendationsGrid">
            <property name="horizontalSpacing">
             <number>24</number>
            </property>
@@ -147,23 +145,35 @@ QLabel#movieCardReviews {
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="moviePageHost">
-      <layout class="QVBoxLayout" name="moviePageHostLayout">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
+     <widget class="QWidget" name="recommendationsEmptyPage">
+      <layout class="QVBoxLayout" name="recommendationsEmptyLayout">
+       <item>
+        <spacer name="emptyTopSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="recommendationsEmptyLabel">
+         <property name="text">
+          <string>No recommendations yet. Pick some favorite genres in Settings to see movies tailored for you.</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="emptyBottomSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </spacer>
+       </item>
       </layout>
      </widget>
     </widget>
